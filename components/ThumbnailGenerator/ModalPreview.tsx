@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { PreviewCanvas } from '@/components/PreviewCanvas';
-import { ThemeId } from '@/lib/themes';
-import { PreviewSelection } from '@/lib/types';
+import React from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { PreviewCanvas } from "@/components/PreviewCanvas";
+import { ThemeId } from "@/lib/themes";
+import { PreviewSelection } from "@/lib/types";
 
 interface ModalPreviewProps {
   selectedPreview: PreviewSelection | null;
@@ -32,14 +32,14 @@ export const ModalPreview: React.FC<ModalPreviewProps> = ({
   return (
     <AnimatePresence>
       {selectedPreview && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 lg:p-12 bg-[#000000ef] backdrop-blur-sm"
           onClick={() => setSelectedPreview(null)}
         >
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
@@ -53,17 +53,28 @@ export const ModalPreview: React.FC<ModalPreviewProps> = ({
                     {selectedPreview.lang.label} - {selectedPreview.ratio.name}
                   </h3>
                   <p className="text-[10px] text-zinc-500 font-mono">
-                    {selectedPreview.ratio.width} x {selectedPreview.ratio.height} PX
+                    {selectedPreview.ratio.width} x{" "}
+                    {selectedPreview.ratio.height} PX
                   </p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => setSelectedPreview(null)}
                 className="p-2 hover:bg-zinc-800 rounded-full text-zinc-500 hover:text-white transition-colors"
                 aria-label="Close modal"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
@@ -84,13 +95,21 @@ export const ModalPreview: React.FC<ModalPreviewProps> = ({
               />
             </div>
             <div className="p-4 bg-zinc-950/50 flex justify-end gap-3">
-              <button 
+              <button
                 onClick={() => {
-                  const canvas = document.getElementById('canvas-modal') as HTMLCanvasElement;
+                  const canvas = document.getElementById(
+                    "canvas-modal",
+                  ) as HTMLCanvasElement;
                   if (canvas) {
-                    const link = document.createElement('a');
-                    link.download = `flare-${selectedPreview.lang.label}-${selectedPreview.ratio.id}-${Date.now()}.png`;
-                    link.href = canvas.toDataURL('image/png', 1.0);
+                    const link = document.createElement("a");
+                    // Format filename: Language-Ratio.png
+                    const langName = selectedPreview.lang.label.replace(
+                      /\s+/g,
+                      "-",
+                    );
+                    const ratioName = selectedPreview.ratio.name.split(" ")[0]; // Get "16:9" from "16:9 (YouTube)"
+                    link.download = `${langName}-${ratioName}.png`;
+                    link.href = canvas.toDataURL("image/png", 1.0);
                     link.click();
                   }
                 }}

@@ -1,0 +1,14 @@
+{
+  "id": "FlareCover",
+  "name": "FLARE COVER - Multilingual Cover Engine",
+  "description": "High-performance multilingual thumbnail and cover generation engine for designing and previewing marketing assets across multiple languages and aspect ratios",
+  "coreFeatures": [
+    "Concurrent Multilingual Design",
+    "8 Dynamic Render Themes",
+    "Multi-Ratio Matrix Preview",
+    "Advanced Color & Font Customization",
+    "Instant PNG Export"
+  ],
+  "appUrl": "https://flarecover.aivaded.com/",
+  "iconUrl": "https://flarecover.aivaded.com/icon-512.png"
+}

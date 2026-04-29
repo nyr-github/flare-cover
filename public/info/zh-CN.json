@@ -1,0 +1,14 @@
+{
+  "id": "FlareCover",
+  "name": "FLARE COVER - 多语言封面生成引擎",
+  "description": "高性能多语言缩略图和封面生成引擎,支持多种语言和比例的营销素材设计与预览",
+  "coreFeatures": [
+    "多语言并发设计",
+    "8种动态渲染主题",
+    "多比例矩阵预览",
+    "高级颜色与字体定制",
+    "即时PNG导出"
+  ],
+  "appUrl": "https://flarecover.aivaded.com/",
+  "iconUrl": "https://flarecover.aivaded.com/icon-512.png"
+}
