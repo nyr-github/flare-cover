@@ -53,7 +53,7 @@ export default function RootLayout({
         {children}
         <script
           async
-          src="https://plausible.io/api/loader/flarecover.js"
+          src="https://plausible.aivaded.com/api/loader/flarecover.js"
         ></script>
       </body>
     </html>
